@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.2">
+  <POU Name="MAIN" Id="{22a10165-be90-40c4-a1dc-d73ebc59bbc7}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	send_counter AT%Q*:INT;
+	receive_counter AT%I*:INT;
+	receive_counter1 AT%I*:INT;
+	receive_counter2 AT%I*:INT;
+ 
+	b_varin AT%I*:ARRAY [0..7]OF BYTE;
+	b_varout AT%Q*:ARRAY [0..2]OF BYTE;
+	b_varin1 AT%I*:ARRAY [0..3]OF BYTE;
+	b_varin2 AT%I*:ARRAY [0..7]OF BYTE;
+	
+	NodeState AT %I* :					USINT;
+	DigFlag AT %I* :						BOOL;
+	EmergencyCounter AT %I*:				USINT;
+	
+	x_var: BOOL;
+	i:INT:=0;
+	fb_trig:R_TRIG;
+	fb_time:TON;
+	
+	xaxis AT %I*: INT;
+	yaxis AT %I*: INT;
+	zaxis AT %I*: INT;
+	switch AT %I*: INT;
+	
+	(*send_counter2 AT%Q*:INT;
+	outputCommand AT%Q*:BYTE;
+	receive_counter3 AT%I*:INT;
+	b_varin3 AT%I*:ARRAY [0..6]OF BYTE;*)
+ 	FBJoyStickIns:FB_JoyStick;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(*b_varout[0]:=16#F6;
+b_varout[1]:=16#A3;
+b_varout[2]:=16#11;*)
+
+//fb_trig(clk:=x_var);
+//IF fb_trig.Q  THEN
+
+//fb_time(IN:=TRUE  , PT:=T#2S);  //rising along the triiger
+//IF fb_time.Q THEN
+
+//send_counter:=send_counter+1;
+
+//fb_time(IN:=FALSE);
+//END_IF
+
+//END_IF
+(*xaxis;
+yaxis;
+zaxis;
+switch;*)
+
+FBJoyStickIns();
+//FBJoyStickIns(InputArray:= b_varin3, ReceiveCount:=receive_counter3 , SendCount:=send_counter2 , OutputCommand:=outputCommand );
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

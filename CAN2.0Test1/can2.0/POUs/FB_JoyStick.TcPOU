@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.2">
+  <POU Name="FB_JoyStick" Id="{c294fae4-d759-4fcc-a75e-fd1f6ee0f863}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_JoyStick
+VAR_INPUT
+	 (*InputArray:ARRAY [0..6]OF BYTE;
+	 ReceiveCount:INT;
+	 SendCount:INT;
+	 OutputCommand:BYTE;*)
+END_VAR
+VAR_OUTPUT
+	
+END_VAR
+VAR
+	CommandChr:STRING:='G';
+	FBTime:TON;
+	GetSystemTimeInfo:GETSYSTEMTIME;
+    timeLoDW1:UDINT;
+	timeHiDW1:UDINT;
+	timeLoDW2:UDINT;
+	timeHiDW2:UDINT;
+	timeLoDWDValue:UDINT;
+	timeHiDWDValue:UDINT;
+	a:INT;
+	etValue:TIME;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(*OutputCommand:= Tc2_System.F_ToASC(CommandChr);   //SendCommand
+send_counter2:=send_counter2+1;  //**??GVL can increase continusly but input parameter can't
+//sendCount:=sendCount+1;*)
+
+(*GetSystemTimeInfo(timeLoDW=>timeLoDW1 , timeHiDW=>timeHiDW1 );
+FBTime(IN:=TRUE , PT:=T#100MS,ET=>etValue);
+IF(FBTime.Q) THEN
+	a:=a+1;
+END_IF
+FBTime(IN:= , PT:= , Q=> , ET=> );
+//FBTime(IN:=NOT FBTime.Q  , PT:=T#50MS);
+GetSystemTimeInfo(timeLoDW=>timeLoDW2 , timeHiDW=>timeHiDW2 );
+timeLoDWDValue:=timeLoDW2-timeLoDW1;
+timeHiDWDValue:=timeHiDW2-timeHiDW1;*)
+
+//IF MODTURNS(receive_counter3,7)=0 THEN   //ReceiveCounter stands for numbers of frame not bytes
+	joyStickInfoIns.XAxisDirection:=b_varin3[0];
+	joyStickInfoIns.XAxisAngle:=b_varin3[1];
+	joyStickInfoIns.YAxisDirection:=b_varin3[2];
+	joyStickInfoIns.YAxisAngle:=b_varin3[3];
+	joyStickInfoIns.ZAxisDirection:=b_varin3[4];
+	joyStickInfoIns.ZAxisAngle:=b_varin3[5];
+	joyStickInfoIns.ButtonStatus:=b_varin3[6];
+//END_IF
+
+(*	joyStickInfoIns.XAxisDirection:=InputArray[0];
+	joyStickInfoIns.XAxisAngle:=InputArray[1];
+	joyStickInfoIns.YAxisDirection:=InputArray[2];
+	joyStickInfoIns.YAxisAngle:=InputArray[3];
+	joyStickInfoIns.ZAxisDirection:=InputArray[4];
+	joyStickInfoIns.ZAxisAngle:=InputArray[5];
+	joyStickInfoIns.ButtonStatus:=InputArray[6];
+*)]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

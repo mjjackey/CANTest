@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.2">
+  <Task Name="JoystickTimeoutTask" Id="{d5e26ec4-8d65-44b9-8f25-d8eb6f1a067a}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>4000000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>JoystickTimeout</Name>
+    </PouCall>
+    <TaskFBGuid>{18ccfe80-023a-4946-9b63-7adc6e8829da}</TaskFBGuid>
+    <Fb_init>{bb6b4d02-de08-43e1-8e8b-deff4f93a354}</Fb_init>
+    <Fb_exit>{9affe206-ef3b-491e-adcb-0eaae11006c8}</Fb_exit>
+    <CycleUpdate>{3a704994-ca9b-4f3c-beae-f1b05e38d4b3}</CycleUpdate>
+    <PostCycleUpdate>{96770f5f-53a3-4423-9b3d-0801afc30b7c}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.2">
+  <POU Name="JoystickTimeout" Id="{f5a01ca4-271a-404d-b50d-23c26e5b38b0}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM JoystickTimeout
+VAR
+	 preReceiveCount:UINT;
+END_VAR
+				]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF preReceiveCount<>receive_counter3 THEN
+	joyStickInfoIns.CommunictionStatus:=1;
+ELSE
+	joyStickInfoIns.CommunictionStatus:=0;
+END_IF
+preReceiveCount:=receive_counter3;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

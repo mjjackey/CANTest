@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4018.2">
+  <GVL Name="GVL" Id="{60b656fc-ab82-4831-a547-0583943ec5d7}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	send_counter2 AT%Q*:UINT;
+	outputCommand AT%Q*:BYTE;
+	receive_counter3 AT%I*:UINT;
+	b_varin3 AT%I*:ARRAY [0..6]OF BYTE;
+	joyStickInfoIns:JoyStickInfo;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
